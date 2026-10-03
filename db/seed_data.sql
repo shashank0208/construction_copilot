@@ -1,0 +1,508 @@
+-- Construction Cost & Schedule Risk Analytics — Seed Data
+-- Database: construction_risk
+
+-- ============================================================
+-- PROJECTS (15 rows)
+-- ============================================================
+INSERT INTO projects (project_name, project_code, status, project_type, region, client_name, project_manager, description, planned_budget, actual_cost, start_date, planned_end_date, actual_end_date, percent_complete) VALUES
+('Riverside Office Complex',      'RSV-2024-001', 'Active',    'Commercial',    'Northeast', 'Meridian Properties LLC',  'Sarah Chen',       'Multi-story office building with underground parking and LEED certification target', 12500000.00, 9800000.00, '2024-03-15', '2025-09-30', NULL, 72.50),
+('Greenfield Elementary School',  'GRN-2024-002', 'Active',    'Educational',   'Midwest',   'Springfield School Board',  'James Rodriguez',  'New K-5 school with gymnasium, library, and playground facilities',                  8200000.00,  7100000.00, '2024-01-10', '2025-06-15', NULL, 80.00),
+('Harbor Bridge Rehabilitation',  'HBR-2024-003', 'Active',    'Infrastructure','West Coast','State DOT',                'Michael Park',     'Seismic retrofit and deck replacement of 1960s-era steel truss bridge',             22000000.00, 24500000.00,'2024-02-01', '2025-12-31', NULL, 55.00),
+('Sunset Residential Tower',      'SRT-2024-004', 'Active',    'Residential',   'Southeast', 'Horizon Developers Inc.',  'Amanda Foster',    '28-story mixed-use residential tower with retail podium',                            35000000.00, 28000000.00,'2024-04-01', '2026-06-30', NULL, 45.00),
+('Metro Line Extension Phase 2',  'MLE-2024-005', 'Active',    'Infrastructure','Northeast', 'Metro Transit Authority',  'David Kim',        'Light rail extension with 3 new stations and 5.2 km of elevated track',             85000000.00, 72000000.00,'2023-11-01', '2026-03-31', NULL, 60.00),
+('Central Park Pavilion',         'CPP-2024-006', 'Completed', 'Public Works',  'Midwest',   'City of Oakdale',          'Lisa Nguyen',      'Community pavilion with amphitheater, restrooms, and landscaping',                   3200000.00,  3450000.00, '2024-01-15', '2024-11-30', '2024-12-15', 100.00),
+('Industrial Warehouse Cluster',  'IWC-2024-007', 'Active',    'Industrial',    'Southeast', 'LogiPrime Holdings',       'Robert Chen',      'Three 50,000 sq ft warehouses with loading docks and cold storage',                  15500000.00, 11200000.00,'2024-05-01', '2025-10-31', NULL, 58.00),
+('University Research Lab',       'URL-2024-008', 'On Hold',   'Educational',   'West Coast','Pacific State University',  'Karen Thompson',   'BSL-3 research laboratory with specialized HVAC and containment systems',           18000000.00, 4500000.00, '2024-06-01', '2026-01-31', NULL, 22.00),
+('Highway 101 Interchange',      'HWY-2024-009', 'Active',    'Infrastructure','West Coast','CalTrans District 7',      'Thomas Wright',    'Diamond interchange replacement with HOV direct connectors',                         42000000.00, 38000000.00,'2023-09-15', '2025-08-31', NULL, 78.00),
+('Lakeside Medical Center',       'LMC-2024-010', 'Active',    'Healthcare',    'Northeast', 'Regional Health Network',  'Patricia Davis',   '120-bed hospital expansion including new ER wing and MRI suite',                     55000000.00, 48000000.00,'2024-02-15', '2026-02-28', NULL, 62.00),
+('Downtown Parking Structure',    'DPS-2024-011', 'Completed', 'Commercial',    'Midwest',   'City of Elmwood',          'Christopher Lee',  '5-level parking garage with 800 spaces and EV charging stations',                   9500000.00,  10200000.00,'2023-08-01', '2024-08-31', '2024-10-15', 100.00),
+('Solar Farm Installation',       'SFI-2024-012', 'Planning',  'Energy',        'Southeast', 'SunGrid Energy Corp.',     'Michelle Wang',    '50 MW solar photovoltaic installation on 300-acre brownfield site',                  28000000.00, 1200000.00, '2024-09-01', '2025-12-31', NULL, 5.00),
+('Waterfront Promenade',          'WFP-2024-013', 'Active',    'Public Works',  'West Coast','City of Marina Bay',       'Daniel Garcia',    '2.5 km waterfront walkway with bike path, lighting, and public art installations',  7800000.00,  6200000.00, '2024-03-01', '2025-05-31', NULL, 68.00),
+('Data Center Campus',            'DCC-2024-014', 'Planning',  'Industrial',    'Northeast', 'CloudNexus Inc.',          'Jennifer Park',    'Tier IV data center with 40 MW capacity and redundant cooling systems',             120000000.00, 8500000.00,'2024-08-01', '2027-06-30', NULL, 8.00),
+('Historic Theater Restoration',  'HTR-2024-015', 'Cancelled', 'Renovation',    'Midwest',   'Preservation Society',     'Andrew Martinez',  'Full restoration of 1920s Art Deco theater including structural and MEP upgrades',  6500000.00,  950000.00,  '2024-04-15', '2025-04-15', NULL, 12.00);
+
+-- ============================================================
+-- RESOURCES (30 rows)
+-- ============================================================
+INSERT INTO resources (resource_name, resource_type, category, hourly_rate, daily_rate, email, phone, certifications, is_active) VALUES
+('Senior Project Engineer',    'Labor',         'Engineering',       95.00,  760.00, 'j.smith@buildcorp.com',     '555-0101', 'PE, PMP', TRUE),
+('Site Superintendent',        'Labor',         'Management',        85.00,  680.00, 'r.jones@buildcorp.com',     '555-0102', 'OSHA 30, CPR', TRUE),
+('Structural Ironworker',      'Labor',         'Skilled Trade',     72.00,  576.00, 'm.garcia@ironlocal.org',    '555-0103', 'AWS D1.1 Certified Welder', TRUE),
+('Electrician Journeyman',     'Labor',         'Skilled Trade',     68.00,  544.00, 'k.patel@elecunion.org',     '555-0104', 'Master Electrician License', TRUE),
+('Concrete Finisher',          'Labor',         'Skilled Trade',     55.00,  440.00, 'a.lopez@concretepros.com',  '555-0105', NULL, TRUE),
+('Safety Officer',             'Labor',         'Safety',            78.00,  624.00, 't.brown@safetyfirst.com',   '555-0106', 'CSP, CHST, OSHA 500', TRUE),
+('BIM Coordinator',            'Labor',         'Engineering',       82.00,  656.00, 'l.kim@bimservices.com',     '555-0107', 'Revit Professional', TRUE),
+('Heavy Equipment Operator',   'Labor',         'Skilled Trade',     65.00,  520.00, 'c.wilson@operators.org',    '555-0108', 'NCCCO Crane Operator', TRUE),
+('Plumber Foreman',            'Labor',         'Skilled Trade',     70.00,  560.00, 'b.taylor@plumblocal.org',   '555-0109', 'Master Plumber License', TRUE),
+('Quality Control Inspector',  'Labor',         'Quality',           75.00,  600.00, 'n.anderson@qcinspect.com',  '555-0110', 'ACI, AWS CWI', TRUE),
+('Tower Crane 200T',           'Equipment',     'Heavy Machinery',   NULL,   2800.00, NULL, NULL, 'Annual inspection current', TRUE),
+('Excavator CAT 320',          'Equipment',     'Heavy Machinery',   NULL,   1500.00, NULL, NULL, 'GPS-guided, Tier 4 Final', TRUE),
+('Concrete Pump Truck',        'Equipment',     'Concrete',          NULL,   2200.00, NULL, NULL, 'Max reach 52m', TRUE),
+('Mobile Scaffold System',     'Equipment',     'Access',            NULL,   450.00,  NULL, NULL, 'OSHA compliant', TRUE),
+('Compaction Roller',          'Equipment',     'Earthwork',         NULL,   800.00,  NULL, NULL, 'Vibratory, 12-ton', TRUE),
+('Rebar Grade 60',             'Material',      'Structural Steel',  NULL,   NULL,    NULL, NULL, 'ASTM A615', TRUE),
+('Ready-Mix Concrete 4000psi', 'Material',      'Concrete',          NULL,   NULL,    NULL, NULL, 'ACI 318 compliant', TRUE),
+('Structural Steel W-Flange',  'Material',      'Structural Steel',  NULL,   NULL,    NULL, NULL, 'ASTM A992, domestic', TRUE),
+('Copper Wiring 12 AWG',       'Material',      'Electrical',        NULL,   NULL,    NULL, NULL, 'UL Listed', TRUE),
+('PVC Pipe Schedule 40',       'Material',      'Plumbing',          NULL,   NULL,    NULL, NULL, 'ASTM D1785', TRUE),
+('Acme Electrical Inc.',       'Subcontractor', 'Electrical',        NULL,   NULL,    'bids@acmeelec.com',   '555-0201', 'Licensed & Bonded', TRUE),
+('Pacific Plumbing Co.',       'Subcontractor', 'Plumbing',          NULL,   NULL,    'info@pacplumb.com',   '555-0202', 'Licensed & Bonded', TRUE),
+('Steelworks Fabrication',     'Subcontractor', 'Structural',        NULL,   NULL,    'sales@steelworks.com','555-0203', 'AISC Certified', TRUE),
+('GreenScape Landscaping',     'Subcontractor', 'Landscaping',       NULL,   NULL,    'bids@greenscape.com', '555-0204', 'ISA Certified', TRUE),
+('FireShield Systems',         'Subcontractor', 'Fire Protection',   NULL,   NULL,    'proj@fireshield.com', '555-0205', 'NICET Level III', TRUE),
+('TerraFirm Geotechnical',    'Subcontractor', 'Geotechnical',      NULL,   NULL,    'lab@terrafirm.com',   '555-0206', 'ASCE Member', TRUE),
+('CleanAir HVAC Solutions',   'Subcontractor', 'Mechanical',        NULL,   NULL,    'ops@cleanairhvac.com','555-0207', 'NATE Certified', TRUE),
+('Precision Survey Group',    'Subcontractor', 'Survey',            NULL,   NULL,    'field@precsurvey.com','555-0208', 'Licensed PLS', TRUE),
+('SafeGuard Testing Lab',     'Subcontractor', 'Testing',           NULL,   NULL,    'tests@safeguard.com', '555-0209', 'ISO 17025', TRUE),
+('ProCoat Painting',          'Subcontractor', 'Finishing',         NULL,   NULL,    'est@procoat.com',     '555-0210', 'SSPC QP1', FALSE);
+
+-- ============================================================
+-- MILESTONES (60 rows — 4 per project)
+-- ============================================================
+INSERT INTO milestones (project_id, milestone_name, planned_date, actual_date, status, weight_pct, notes) VALUES
+-- RSV-2024-001 Riverside Office Complex
+(1, 'Foundation Complete',         '2024-06-30', '2024-07-10', 'Completed',   20, 'Delayed 10 days due to unexpected rock during excavation'),
+(1, 'Structural Steel Topped Out', '2024-11-15', '2024-12-01', 'Completed',   25, 'Steel delivery delayed by fabricator'),
+(1, 'Envelope Closed',             '2025-03-31', NULL,         'In Progress', 25, 'Curtain wall installation underway'),
+(1, 'Final Inspection',            '2025-09-30', NULL,         'Pending',     30, NULL),
+-- GRN-2024-002 Greenfield Elementary
+(2, 'Site Grading Complete',       '2024-03-15', '2024-03-10', 'Completed',   15, 'Finished ahead of schedule'),
+(2, 'Building Enclosed',           '2024-08-31', '2024-09-15', 'Completed',   30, 'Minor delay from rain'),
+(2, 'MEP Rough-In Complete',       '2025-01-15', '2025-01-20', 'Completed',   25, NULL),
+(2, 'Certificate of Occupancy',    '2025-06-15', NULL,         'In Progress', 30, 'On track for summer completion'),
+-- HBR-2024-003 Harbor Bridge
+(3, 'Temporary Supports Installed','2024-05-31', '2024-06-15', 'Completed',   15, 'Marine conditions caused delay'),
+(3, 'Seismic Retrofit 50%',        '2024-12-31', '2025-02-15', 'Completed',   25, 'Significant rework needed on bent caps'),
+(3, 'Deck Replacement Complete',   '2025-07-31', NULL,         'In Progress', 35, 'Behind schedule — weather windows limited'),
+(3, 'Load Testing and Opening',    '2025-12-31', NULL,         'Pending',     25, NULL),
+-- SRT-2024-004 Sunset Residential Tower
+(4, 'Pile Foundation Complete',    '2024-07-31', '2024-08-15', 'Completed',   15, 'Hit contaminated soil requiring remediation'),
+(4, 'Core Structure Floor 14',    '2024-12-31', '2025-01-10', 'Completed',   20, 'Concrete pump breakdowns caused minor delays'),
+(4, 'Core Structure Floor 28',    '2025-06-30', NULL,         'In Progress', 30, 'Currently on floor 18'),
+(4, 'Interior Fit-Out Complete',   '2026-06-30', NULL,         'Pending',     35, NULL),
+-- MLE-2024-005 Metro Line Extension
+(5, 'Guideway Foundation',         '2024-04-30', '2024-05-15', 'Completed',   15, 'Utility relocations took longer than planned'),
+(5, 'Elevated Structure 50%',      '2024-12-31', '2025-01-31', 'Completed',   25, 'Segment delivery delays'),
+(5, 'Station Structures Complete',  '2025-09-30', NULL,        'In Progress', 30, 'Two of three stations under construction'),
+(5, 'Systems Testing and Revenue', '2026-03-31', NULL,         'Pending',     30, NULL),
+-- CPP-2024-006 Central Park Pavilion
+(6, 'Foundation and Slab',         '2024-04-15', '2024-04-20', 'Completed',   25, NULL),
+(6, 'Structural Frame',            '2024-06-30', '2024-07-05', 'Completed',   25, NULL),
+(6, 'Roof and Enclosure',          '2024-09-15', '2024-09-20', 'Completed',   25, NULL),
+(6, 'Landscaping and Punchlist',   '2024-11-30', '2024-12-15', 'Completed',   25, 'Planting delayed to next window due to frost'),
+-- IWC-2024-007 Industrial Warehouse
+(7, 'Slab on Grade Complete',      '2024-08-15', '2024-08-10', 'Completed',   20, 'Pre-cast panels arriving on schedule'),
+(7, 'Steel Erection Complete',     '2024-11-30', '2024-12-10', 'Completed',   25, NULL),
+(7, 'Roofing and Envelope',        '2025-04-30', NULL,         'In Progress', 25, 'Building 1 complete, buildings 2-3 in progress'),
+(7, 'Cold Storage Commissioning',  '2025-10-31', NULL,         'Pending',     30, NULL),
+-- URL-2024-008 University Research Lab (On Hold)
+(8, 'Excavation and Foundation',   '2024-09-30', '2024-10-15', 'Completed',   15, NULL),
+(8, 'Structural Frame',            '2025-02-28', NULL,         'Delayed',     25, 'Project on hold — funding review'),
+(8, 'MEP and Containment Install', '2025-08-31', NULL,         'Pending',     35, NULL),
+(8, 'Commissioning and Validation','2026-01-31', NULL,         'Pending',     25, NULL),
+-- HWY-2024-009 Highway 101 Interchange
+(9, 'Earthwork and Grading',       '2024-02-28', '2024-03-05', 'Completed',   15, NULL),
+(9, 'Bridge Structures Complete',  '2024-09-30', '2024-10-15', 'Completed',   30, 'Falsework removal delayed'),
+(9, 'Paving and Striping',         '2025-04-30', '2025-05-10', 'Completed',   25, NULL),
+(9, 'Signal and ITS Activation',   '2025-08-31', NULL,         'In Progress', 30, 'Signal controller programming underway'),
+-- LMC-2024-010 Lakeside Medical Center
+(10, 'Foundation and Underground', '2024-06-30', '2024-07-15', 'Completed',   15, 'Unexpected utilities required rerouting'),
+(10, 'Structural Frame Complete',  '2024-12-31', '2025-01-15', 'Completed',   20, NULL),
+(10, 'MEP Rough-In',              '2025-06-30', NULL,         'In Progress', 30, 'Medical gas systems complex'),
+(10, 'Equipment Install and CO',   '2026-02-28', NULL,        'Pending',     35, NULL),
+-- DPS-2024-011 Downtown Parking Structure
+(11, 'Foundation Complete',        '2023-11-30', '2023-12-05', 'Completed',   25, NULL),
+(11, 'Precast Erection',           '2024-03-31', '2024-04-15', 'Completed',   30, 'Crane availability issues'),
+(11, 'Waterproofing and Striping', '2024-06-30', '2024-07-20', 'Completed',   20, NULL),
+(11, 'EV Charger and Final',       '2024-08-31', '2024-10-15', 'Completed',   25, 'EV charger supply chain delays'),
+-- SFI-2024-012 Solar Farm
+(12, 'Site Preparation',           '2024-11-30', NULL,         'Pending',     15, NULL),
+(12, 'Pile Driving and Racking',   '2025-04-30', NULL,         'Pending',     30, NULL),
+(12, 'Panel Installation',         '2025-08-31', NULL,         'Pending',     35, NULL),
+(12, 'Grid Connection and Testing','2025-12-31', NULL,         'Pending',     20, NULL),
+-- WFP-2024-013 Waterfront Promenade
+(13, 'Seawall and Foundation',     '2024-06-30', '2024-07-05', 'Completed',   25, 'Tidal work windows restricted schedule'),
+(13, 'Pathway and Bike Path',      '2024-10-31', '2024-11-10', 'Completed',   25, NULL),
+(13, 'Lighting and Furnishings',   '2025-02-28', NULL,         'In Progress', 25, 'Custom light fixtures on backorder'),
+(13, 'Art Installations and Final','2025-05-31', NULL,         'Pending',     25, NULL),
+-- DCC-2024-014 Data Center Campus
+(14, 'Site and Foundation',        '2025-03-31', NULL,         'Pending',     10, 'Environmental review pending'),
+(14, 'Building Shell',             '2025-12-31', NULL,         'Pending',     25, NULL),
+(14, 'Power and Cooling Systems',  '2026-09-30', NULL,         'Pending',     40, NULL),
+(14, 'Commissioning',              '2027-06-30', NULL,         'Pending',     25, NULL),
+-- HTR-2024-015 Historic Theater (Cancelled)
+(15, 'Structural Assessment',      '2024-06-30', '2024-07-01', 'Completed',   20, 'Assessment revealed more damage than expected'),
+(15, 'Structural Stabilization',   '2024-10-31', NULL,         'Cancelled',   30, 'Project cancelled due to cost escalation'),
+(15, 'Interior Restoration',       '2025-02-28', NULL,         'Cancelled',   30, NULL),
+(15, 'Final Restoration',          '2025-04-15', NULL,         'Cancelled',   20, NULL);
+
+-- ============================================================
+-- COST_ITEMS (sample — ~200 rows across projects)
+-- ============================================================
+INSERT INTO cost_items (project_id, resource_id, cost_category, description, planned_amount, actual_amount, incurred_date, approval_status, notes) VALUES
+-- Project 1: Riverside Office Complex
+(1, 1,  'Labor',          'Senior engineer — design review',              180000.00, 195000.00, '2024-04-15', 'Approved', NULL),
+(1, 2,  'Labor',          'Site superintendent — 18 months',              367200.00, 340000.00, '2024-04-01', 'Approved', NULL),
+(1, 3,  'Labor',          'Ironworker crew — structural phase',           345600.00, 380000.00, '2024-07-15', 'Approved', 'Overtime due to schedule recovery'),
+(1, 11, 'Equipment',      'Tower crane rental — 14 months',              1176000.00, 1050000.00,'2024-06-01', 'Approved', NULL),
+(1, 16, 'Materials',       'Rebar — foundation and structure',            520000.00, 545000.00, '2024-05-01', 'Approved', 'Price escalation of 5%'),
+(1, 17, 'Materials',       'Concrete — all pours',                        680000.00, 710000.00, '2024-05-15', 'Approved', NULL),
+(1, 18, 'Materials',       'Structural steel — superstructure',          1450000.00, 1520000.00, '2024-08-01', 'Approved', 'Tariff surcharge applied'),
+(1, 21, 'Subcontractor',  'Electrical rough-in and finish',              850000.00, 820000.00, '2024-10-01', 'Approved', NULL),
+(1, 22, 'Subcontractor',  'Plumbing and fire protection',                620000.00, 650000.00, '2024-10-15', 'Approved', NULL),
+(1, NULL,'Permits',        'Building permit and plan check',              125000.00, 125000.00, '2024-03-20', 'Approved', NULL),
+(1, NULL,'Overhead',       'Project insurance and bonds',                 375000.00, 375000.00, '2024-03-15', 'Approved', NULL),
+(1, NULL,'Contingency',    'Owner contingency reserve',                  625000.00, 0.00,      '2024-03-15', 'Approved', 'Not yet drawn'),
+(1, 7,  'Labor',          'BIM coordination services',                   164000.00, 170000.00, '2024-04-01', 'Approved', NULL),
+(1, 6,  'Labor',          'Safety officer — full duration',              249600.00, 230000.00, '2024-04-01', 'Approved', NULL),
+-- Project 2: Greenfield Elementary
+(2, 2,  'Labor',          'Superintendent — 16 months',                  326400.00, 310000.00, '2024-01-15', 'Approved', NULL),
+(2, 5,  'Labor',          'Concrete finishing crew',                     176000.00, 185000.00, '2024-03-01', 'Approved', NULL),
+(2, 17, 'Materials',       'Concrete — foundation and slab',             280000.00, 295000.00, '2024-02-15', 'Approved', NULL),
+(2, 18, 'Materials',       'Structural steel — gym and library',         420000.00, 435000.00, '2024-05-01', 'Approved', NULL),
+(2, 21, 'Subcontractor',  'Electrical systems',                          520000.00, 510000.00, '2024-06-01', 'Approved', NULL),
+(2, 27, 'Subcontractor',  'HVAC systems',                               380000.00, 395000.00, '2024-07-01', 'Approved', NULL),
+(2, 24, 'Subcontractor',  'Landscaping and playground',                  185000.00, 180000.00, '2025-03-01', 'Approved', NULL),
+(2, NULL,'Permits',        'School construction permits',                 85000.00,  85000.00,  '2024-01-10', 'Approved', NULL),
+(2, NULL,'Overhead',       'Insurance and testing',                      246000.00, 250000.00, '2024-01-10', 'Approved', NULL),
+(2, NULL,'Contingency',    'District contingency',                       410000.00, 120000.00, '2024-01-10', 'Approved', 'Partial draw for unforeseen soil work'),
+-- Project 3: Harbor Bridge
+(3, 1,  'Labor',          'Lead structural engineer',                    380000.00, 420000.00, '2024-02-15', 'Approved', 'Extended scope for seismic analysis'),
+(3, 3,  'Labor',          'Ironworker crews — retrofit',                 890000.00, 1050000.00, '2024-04-01', 'Approved', 'Significant rework on bent caps'),
+(3, 8,  'Labor',          'Equipment operators',                         520000.00, 540000.00, '2024-03-01', 'Approved', NULL),
+(3, 11, 'Equipment',      'Barge-mounted crane rental',                 1680000.00, 1800000.00, '2024-04-01', 'Approved', 'Marine operations premium'),
+(3, 12, 'Equipment',      'Excavators for approach work',                450000.00, 430000.00, '2024-03-01', 'Approved', NULL),
+(3, 16, 'Materials',       'High-strength rebar',                        1200000.00, 1350000.00, '2024-05-01', 'Approved', 'Upgraded spec from engineer'),
+(3, 17, 'Materials',       'Marine-grade concrete',                      980000.00, 1020000.00, '2024-06-01', 'Approved', NULL),
+(3, 23, 'Subcontractor',  'Steel fabrication — retrofit elements',       2200000.00, 2450000.00, '2024-04-15', 'Approved', 'Redesigned connections added cost'),
+(3, 26, 'Subcontractor',  'Geotechnical monitoring',                     340000.00, 360000.00, '2024-03-01', 'Approved', NULL),
+(3, NULL,'Permits',        'Environmental and marine permits',            280000.00, 310000.00, '2024-02-01', 'Approved', 'Additional NOAA consultation required'),
+(3, NULL,'Contingency',    'Bridge contingency fund',                   2200000.00, 1800000.00, '2024-02-01', 'Approved', 'Partially drawn for rework'),
+-- Project 4: Sunset Residential Tower
+(4, 1,  'Labor',          'Structural engineer — tower design',          420000.00, 400000.00, '2024-04-15', 'Approved', NULL),
+(4, 2,  'Labor',          'Site superintendent — 24 months',             489600.00, 450000.00, '2024-05-01', 'Approved', NULL),
+(4, 11, 'Equipment',      'Tower crane — 28 months',                    2352000.00, 2100000.00, '2024-06-01', 'Approved', NULL),
+(4, 13, 'Equipment',      'Concrete pump — high rise',                   880000.00, 920000.00, '2024-07-01', 'Approved', 'Higher pump hours than estimated'),
+(4, 17, 'Materials',       'High-strength concrete all floors',         2800000.00, 2500000.00, '2024-07-15', 'Approved', NULL),
+(4, 18, 'Materials',       'Structural steel — core and podium',        3200000.00, 2900000.00, '2024-08-01', 'Approved', NULL),
+(4, 21, 'Subcontractor',  'Electrical — all phases',                    2100000.00, 1800000.00, '2024-10-01', 'Pending',  NULL),
+(4, 22, 'Subcontractor',  'Plumbing risers and units',                  1500000.00, 1200000.00, '2024-11-01', 'Pending',  NULL),
+(4, 25, 'Subcontractor',  'Fire protection — high rise',                 850000.00, 700000.00, '2024-12-01', 'Pending',  NULL),
+(4, NULL,'Permits',        'High-rise building permit',                   320000.00, 320000.00, '2024-04-01', 'Approved', NULL),
+(4, NULL,'Overhead',       'Project insurance — high rise',               875000.00, 875000.00, '2024-04-01', 'Approved', NULL),
+(4, NULL,'Contingency',    'Developer contingency',                     1750000.00, 0.00,      '2024-04-01', 'Approved', 'Not yet drawn'),
+-- Project 5: Metro Line Extension
+(5, 1,  'Labor',          'Lead engineers — rail systems',               760000.00, 800000.00, '2023-12-01', 'Approved', NULL),
+(5, 8,  'Labor',          'Equipment operators — guideway',              840000.00, 880000.00, '2024-01-15', 'Approved', NULL),
+(5, 11, 'Equipment',      'Segment lifter crane',                       2800000.00, 2650000.00, '2024-02-01', 'Approved', NULL),
+(5, 12, 'Equipment',      'Pile driving rigs',                          1200000.00, 1350000.00, '2024-01-01', 'Approved', 'Additional rig needed'),
+(5, 17, 'Materials',       'Precast guideway segments',                 8500000.00, 8200000.00, '2024-03-01', 'Approved', NULL),
+(5, 18, 'Materials',       'Station structural steel',                  3200000.00, 3100000.00, '2024-06-01', 'Approved', NULL),
+(5, 23, 'Subcontractor',  'Steel fabrication — stations',               4500000.00, 4200000.00, '2024-04-01', 'Approved', NULL),
+(5, 21, 'Subcontractor',  'Electrical — traction power',               6200000.00, 5800000.00, '2024-08-01', 'Approved', NULL),
+(5, NULL,'Permits',        'Rail corridor permits',                      520000.00, 580000.00, '2023-11-01', 'Approved', 'Additional environmental mitigation'),
+(5, NULL,'Contingency',    'Transit authority contingency',             8500000.00, 3200000.00, '2023-11-01', 'Approved', NULL),
+-- Project 6: Central Park Pavilion (Completed)
+(6, 2,  'Labor',          'Superintendent — 10 months',                  204000.00, 210000.00, '2024-01-20', 'Approved', NULL),
+(6, 5,  'Labor',          'Concrete crew — slab and amphitheater',       88000.00,  92000.00,  '2024-03-01', 'Approved', NULL),
+(6, 17, 'Materials',       'Concrete and masonry',                       180000.00, 195000.00, '2024-03-15', 'Approved', NULL),
+(6, 24, 'Subcontractor',  'Landscaping and irrigation',                  420000.00, 450000.00, '2024-08-01', 'Approved', 'Extended planting scope'),
+(6, NULL,'Permits',        'Park construction permit',                    32000.00,  32000.00,  '2024-01-15', 'Approved', NULL),
+(6, NULL,'Overhead',       'Insurance',                                   96000.00,  96000.00,  '2024-01-15', 'Approved', NULL),
+-- Project 7: Industrial Warehouse Cluster
+(7, 2,  'Labor',          'Superintendent — 18 months',                  367200.00, 340000.00, '2024-05-15', 'Approved', NULL),
+(7, 5,  'Labor',          'Concrete crew — slabs',                      264000.00, 275000.00, '2024-06-01', 'Approved', NULL),
+(7, 12, 'Equipment',      'Excavators — site prep',                      270000.00, 255000.00, '2024-05-15', 'Approved', NULL),
+(7, 15, 'Equipment',      'Compaction equipment',                        144000.00, 140000.00, '2024-06-01', 'Approved', NULL),
+(7, 17, 'Materials',       'Concrete — all slabs',                       950000.00, 980000.00, '2024-06-15', 'Approved', NULL),
+(7, 18, 'Materials',       'Pre-engineered steel frames',               2800000.00, 2750000.00, '2024-08-01', 'Approved', NULL),
+(7, 27, 'Subcontractor',  'Refrigeration systems',                     1200000.00, 1100000.00, '2025-02-01', 'Pending',  NULL),
+(7, NULL,'Overhead',       'Insurance and bonds',                        465000.00, 465000.00, '2024-05-01', 'Approved', NULL),
+-- Project 9: Highway 101 Interchange
+(9, 1,  'Labor',          'Highway design engineers',                    840000.00, 860000.00, '2023-10-01', 'Approved', NULL),
+(9, 8,  'Labor',          'Equipment operators — earthwork',             624000.00, 650000.00, '2023-11-01', 'Approved', NULL),
+(9, 12, 'Equipment',      'Excavators and graders',                      720000.00, 700000.00, '2023-10-15', 'Approved', NULL),
+(9, 15, 'Equipment',      'Compaction — subgrade',                       320000.00, 310000.00, '2023-11-01', 'Approved', NULL),
+(9, 17, 'Materials',       'Bridge deck concrete',                      1800000.00, 1850000.00, '2024-03-01', 'Approved', NULL),
+(9, 16, 'Materials',       'Bridge rebar',                               960000.00, 980000.00, '2024-02-15', 'Approved', NULL),
+(9, 23, 'Subcontractor',  'Bridge steel fabrication',                   3600000.00, 3500000.00, '2024-01-01', 'Approved', NULL),
+(9, NULL,'Materials',       'Asphalt — all paving',                     2100000.00, 2200000.00, '2025-01-01', 'Approved', 'Oil price increase'),
+(9, NULL,'Permits',        'CalTrans encroachment permits',               180000.00, 180000.00, '2023-09-15', 'Approved', NULL),
+(9, NULL,'Contingency',    'Highway contingency',                       4200000.00, 2800000.00, '2023-09-15', 'Approved', NULL),
+-- Project 10: Lakeside Medical Center
+(10, 1,  'Labor',         'Medical facility engineers',                  920000.00, 950000.00, '2024-03-01', 'Approved', NULL),
+(10, 2,  'Labor',         'Superintendent — 24 months',                  489600.00, 460000.00, '2024-03-01', 'Approved', NULL),
+(10, 11, 'Equipment',     'Tower crane — 20 months',                    1680000.00, 1600000.00, '2024-05-01', 'Approved', NULL),
+(10, 17, 'Materials',      'Concrete — all structures',                 2400000.00, 2500000.00, '2024-05-15', 'Approved', NULL),
+(10, 18, 'Materials',      'Structural steel',                          3800000.00, 3700000.00, '2024-07-01', 'Approved', NULL),
+(10, 21, 'Subcontractor', 'Electrical — hospital grade',               3200000.00, 3000000.00, '2024-09-01', 'Approved', NULL),
+(10, 22, 'Subcontractor', 'Medical plumbing and gas',                  2100000.00, 2000000.00, '2024-10-01', 'Pending',  NULL),
+(10, 27, 'Subcontractor', 'HVAC — clean room specs',                   4200000.00, 3800000.00, '2024-11-01', 'Pending',  NULL),
+(10, NULL,'Permits',       'Hospital construction permits',               420000.00, 450000.00, '2024-02-15', 'Approved', NULL),
+(10, NULL,'Contingency',   'Medical facility contingency',              5500000.00, 2000000.00, '2024-02-15', 'Approved', NULL),
+-- Project 11: Downtown Parking Structure (Completed)
+(11, 2,  'Labor',         'Superintendent — 14 months',                  285600.00, 290000.00, '2023-08-15', 'Approved', NULL),
+(11, 17, 'Materials',      'Precast concrete elements',                 2800000.00, 3100000.00, '2023-10-01', 'Approved', 'Precast plant capacity issues increased cost'),
+(11, 19, 'Materials',      'Electrical — EV chargers and lighting',      420000.00, 520000.00, '2024-05-01', 'Approved', 'EV charger spec upgraded'),
+(11, NULL,'Overhead',      'Insurance and bonds',                        285000.00, 285000.00, '2023-08-01', 'Approved', NULL),
+-- Project 13: Waterfront Promenade
+(13, 2,  'Labor',         'Superintendent — 14 months',                  285600.00, 270000.00, '2024-03-15', 'Approved', NULL),
+(13, 5,  'Labor',         'Concrete crew — seawall and paths',          220000.00, 235000.00, '2024-04-01', 'Approved', NULL),
+(13, 12, 'Equipment',     'Marine excavation equipment',                 360000.00, 380000.00, '2024-04-01', 'Approved', NULL),
+(13, 17, 'Materials',      'Marine concrete — seawall',                  580000.00, 610000.00, '2024-04-15', 'Approved', NULL),
+(13, 24, 'Subcontractor', 'Landscaping — native plants',                320000.00, 310000.00, '2024-09-01', 'Approved', NULL),
+(13, NULL,'Materials',      'Custom lighting fixtures',                  280000.00, 320000.00, '2024-12-01', 'Pending',  'Fixtures on backorder — price increased'),
+(13, NULL,'Permits',       'Coastal development permit',                  95000.00,  95000.00,  '2024-03-01', 'Approved', NULL);
+
+-- ============================================================
+-- RISK_ASSESSMENTS (45 rows)
+-- ============================================================
+INSERT INTO risk_assessments (project_id, risk_category, risk_description, probability, impact, mitigation_strategy, status, identified_by, identified_date, review_date, notes) VALUES
+-- Project 1
+(1, 'Budget',       'Steel price escalation due to tariffs',                               4, 4, 'Lock in pricing with early procurement contracts',      'Mitigating', 'Sarah Chen',    '2024-03-20', '2024-09-15', NULL),
+(1, 'Schedule',     'Curtain wall delivery delays from overseas manufacturer',             3, 4, 'Identify backup domestic supplier',                      'Open',       'James Lee',     '2024-08-01', '2025-01-15', NULL),
+(1, 'Quality',      'LEED certification requirements may require design changes',         2, 3, 'Engage LEED consultant early in design phase',           'Mitigating', 'Sarah Chen',    '2024-04-01', '2024-10-01', NULL),
+-- Project 2
+(2, 'Schedule',     'Summer construction window limited by school calendar',               3, 3, 'Accelerate interior work during school year',            'Mitigating', 'James Rodriguez','2024-01-15', '2024-06-01', NULL),
+(2, 'Safety',       'Active school campus adjacent to construction zone',                  2, 5, 'Enhanced fencing, dedicated safety monitor, restricted hours', 'Mitigating', 'Safety Team', '2024-01-15', '2024-06-01', NULL),
+(2, 'Budget',       'Playground equipment cost increases',                                 2, 2, 'Pre-order equipment at locked pricing',                  'Closed',     'James Rodriguez','2024-02-01', '2024-04-01', NULL),
+-- Project 3
+(3, 'Budget',       'Marine operations cost overruns due to weather delays',               5, 5, 'Build float into marine work windows, budget premium',   'Open',       'Michael Park',  '2024-02-15', '2024-08-01', 'This is the highest risk item across all projects'),
+(3, 'Schedule',     'Seismic retrofit scope creep from field conditions',                  4, 5, 'Detailed field survey before each phase',                'Mitigating', 'Michael Park',  '2024-03-01', '2024-09-01', NULL),
+(3, 'Environmental','Marine habitat disruption during pile work',                          3, 4, 'Work within approved biological windows',                'Mitigating', 'Env. Team',     '2024-02-01', '2024-07-01', NULL),
+(3, 'Safety',       'Working over water with heavy equipment',                             3, 5, 'Marine safety plan, rescue boat on standby',             'Mitigating', 'Safety Team',   '2024-02-15', '2024-08-01', NULL),
+-- Project 4
+(4, 'Budget',       'Contaminated soil remediation cost uncertainty',                      3, 4, 'Phase II environmental completed, contingency allocated', 'Mitigating', 'Amanda Foster', '2024-04-15', '2024-08-01', NULL),
+(4, 'Schedule',     'High-rise concrete pump availability',                                3, 3, 'Contract backup pump, maintain service schedule',        'Mitigating', 'Site Team',     '2024-06-01', '2024-12-01', NULL),
+(4, 'Weather',      'Hurricane season impact on tower crane operations',                   2, 5, 'Crane tie-down procedures, weather monitoring protocol', 'Open',       'Safety Team',   '2024-05-01', '2024-11-01', NULL),
+-- Project 5
+(5, 'Budget',       'Utility relocation costs exceeding estimates',                        4, 4, 'Potholing program to verify utility locations',           'Mitigating', 'David Kim',     '2023-11-15', '2024-05-01', NULL),
+(5, 'Schedule',     'Precast segment delivery schedule risk',                              3, 4, 'Dual-source supply agreement',                           'Mitigating', 'David Kim',     '2024-01-01', '2024-07-01', NULL),
+(5, 'Legal',        'Right-of-way acquisition delays',                                     3, 5, 'Parallel condemnation proceedings as backup',             'Open',       'Legal Team',    '2023-12-01', '2024-06-01', NULL),
+(5, 'Supply Chain', 'Signal system components on 12-month lead time',                      4, 4, 'Early procurement, warehouse components',                 'Mitigating', 'David Kim',     '2024-02-01', '2024-08-01', NULL),
+-- Project 6 (Completed)
+(6, 'Weather',      'Frost delay for landscaping installation',                            4, 2, 'Flexible planting schedule, cold-hardy species backup',   'Closed',     'Lisa Nguyen',   '2024-01-20', '2024-10-01', 'Materialized — delayed final completion by 15 days'),
+(6, 'Budget',       'Amphitheater acoustic design changes',                                2, 2, 'Value engineering alternatives identified',               'Closed',     'Lisa Nguyen',   '2024-02-01', '2024-05-01', NULL),
+-- Project 7
+(7, 'Schedule',     'Pre-engineered metal building delivery delays',                       3, 3, 'Order placed 6 months ahead',                             'Mitigating', 'Robert Chen',   '2024-05-15', '2024-11-01', NULL),
+(7, 'Budget',       'Cold storage equipment price volatility',                             3, 4, 'Budgeted at current quote plus 15% escalation',          'Open',       'Robert Chen',   '2024-06-01', '2024-12-01', NULL),
+(7, 'Quality',      'Slab flatness for cold storage — FF/FL requirements',                 2, 4, 'Laser screed specification, third-party testing',        'Mitigating', 'QC Team',       '2024-06-15', '2024-09-01', NULL),
+-- Project 8 (On Hold)
+(8, 'Budget',       'BSL-3 containment cost exceeds original estimate',                    5, 5, 'Redesign to reduce containment area, seek additional funding', 'Open',  'Karen Thompson','2024-06-15', '2024-09-01', 'Primary reason for project hold'),
+(8, 'Legal',        'Research compliance and permitting uncertainty',                       3, 4, 'Engage regulatory consultant',                            'Open',       'Karen Thompson','2024-07-01', '2024-10-01', NULL),
+-- Project 9
+(9, 'Schedule',     'Traffic management plan approval delays',                             2, 3, 'Submit plans 90 days ahead, pre-coordination meetings',  'Closed',     'Thomas Wright', '2023-10-01', '2024-03-01', NULL),
+(9, 'Safety',       'High-speed traffic adjacent to active work zone',                     3, 5, 'Enhanced TTC plan, attenuator trucks, speed monitoring',  'Mitigating', 'Safety Team',   '2023-10-01', '2024-06-01', NULL),
+(9, 'Budget',       'Asphalt price fluctuation due to oil market',                         3, 3, 'Price adjustment clause in paving subcontract',           'Mitigating', 'Thomas Wright', '2024-01-01', '2024-07-01', NULL),
+-- Project 10
+(10, 'Schedule',    'Medical equipment lead times affecting commissioning',                4, 4, 'Early procurement, phased equipment installation',       'Open',       'Patricia Davis','2024-03-01', '2024-09-01', NULL),
+(10, 'Budget',     'Specialized medical gas system cost overrun risk',                     3, 4, 'Competitive bid with 3 qualified MEP contractors',       'Mitigating', 'Patricia Davis','2024-04-01', '2024-10-01', NULL),
+(10, 'Quality',    'Clean room HVAC validation failures',                                  2, 5, 'Pre-qualification of HVAC contractor, mock-up testing',  'Open',       'QC Team',       '2024-05-01', '2024-11-01', NULL),
+(10, 'Safety',     'Hospital operations during adjacent construction',                     3, 4, 'Vibration monitoring, noise mitigation, dust control',   'Mitigating', 'Safety Team',   '2024-03-15', '2024-09-15', NULL),
+-- Project 11 (Completed)
+(11, 'Budget',     'Precast panel cost increase from plant capacity',                      4, 3, 'Negotiate volume discount, early order',                  'Closed',     'Christopher Lee','2023-08-15', '2024-01-01', 'Materialized — $300K overage'),
+(11, 'Supply Chain','EV charger component shortage',                                       4, 3, 'Pre-order, accept partial delivery',                     'Closed',     'Christopher Lee','2024-02-01', '2024-07-01', 'Materialized — 6 week delay'),
+-- Project 12
+(12, 'Environmental','Brownfield contamination extent unknown',                             3, 5, 'Phase II environmental study in progress',                'Open',       'Michelle Wang', '2024-09-01', NULL, NULL),
+(12, 'Supply Chain', 'Solar panel supply chain disruption risk',                            3, 4, 'Dual-source procurement strategy',                        'Open',       'Michelle Wang', '2024-09-15', NULL, NULL),
+(12, 'Legal',        'Power purchase agreement negotiation delays',                         2, 4, 'Parallel negotiations with multiple utilities',           'Open',       'Legal Team',    '2024-10-01', NULL, NULL),
+-- Project 13
+(13, 'Weather',      'Storm surge damage to completed seawall sections',                    3, 4, 'Phased construction with temporary protection',          'Mitigating', 'Daniel Garcia', '2024-03-15', '2024-09-01', NULL),
+(13, 'Supply Chain', 'Custom lighting fixture delivery uncertainty',                        4, 3, 'Backup standard fixtures identified',                     'Open',       'Daniel Garcia', '2024-08-01', '2025-01-01', 'Fixtures now confirmed on backorder'),
+(13, 'Budget',       'Tidal work restrictions increasing labor costs',                      3, 3, 'Flexible crew scheduling, tide-dependent work plan',     'Mitigating', 'Daniel Garcia', '2024-04-01', '2024-10-01', NULL),
+-- Project 14
+(14, 'Budget',       'Power infrastructure costs highly uncertain at early stage',          4, 5, 'Utility corridor study commissioned',                     'Open',       'Jennifer Park', '2024-08-15', NULL, NULL),
+(14, 'Schedule',     'Environmental review timeline for greenfield site',                   3, 4, 'Pre-application meetings with agencies',                  'Open',       'Jennifer Park', '2024-08-15', NULL, NULL),
+(14, 'Supply Chain', 'Generator and UPS equipment lead times 18+ months',                   4, 5, 'Early procurement strategy, deposit on long-lead items',  'Open',       'Jennifer Park', '2024-09-01', NULL, 'Critical path item'),
+-- Project 15 (Cancelled)
+(15, 'Budget',       'Structural damage more extensive than assessment indicated',          5, 5, 'Revised structural assessment, full cost re-estimate',    'Accepted',   'Andrew Martinez','2024-05-01', '2024-08-01', 'This risk materialized and caused project cancellation'),
+(15, 'Legal',        'Historic preservation requirements adding scope and cost',            4, 4, 'Engage preservation specialist, seek variance',           'Accepted',   'Andrew Martinez','2024-04-20', '2024-07-01', NULL);
+
+-- ============================================================
+-- CHANGE_ORDERS (25 rows)
+-- ============================================================
+INSERT INTO change_orders (project_id, change_order_number, title, description, cost_impact, schedule_impact_days, status, submitted_date, approved_date, requested_by, approved_by) VALUES
+(1, 'CO-001', 'Rock excavation — foundation',           'Unexpected rock encountered during foundation excavation requiring blasting', 285000.00, 10, 'Approved', '2024-05-20', '2024-05-25', 'Sarah Chen', 'Owner Rep'),
+(1, 'CO-002', 'LEED platinum upgrade',                  'Owner requested upgrade from LEED Gold to Platinum certification',           180000.00, 0,  'Approved', '2024-07-15', '2024-07-30', 'Owner',       'Sarah Chen'),
+(1, 'CO-003', 'Additional parking level',                'Add one additional underground parking level per city requirement',          650000.00, 30, 'Under Review', '2025-01-10', NULL, 'City Planning', NULL),
+(2, 'CO-001', 'Soil stabilization — gym foundation',    'Poor soil conditions required lime stabilization under gymnasium',            95000.00,  7,  'Approved', '2024-02-28', '2024-03-05', 'Geotech',     'James Rodriguez'),
+(2, 'CO-002', 'Security system upgrade',                 'School board requested enhanced access control and camera system',          120000.00, 0,  'Approved', '2024-09-01', '2024-09-15', 'School Board', 'James Rodriguez'),
+(3, 'CO-001', 'Bent cap rework',                        'Field conditions revealed deterioration worse than design assumed',          850000.00, 45, 'Approved', '2024-08-15', '2024-09-01', 'Michael Park', 'State DOT'),
+(3, 'CO-002', 'Additional seismic dampers',              'Updated seismic analysis requires 12 additional fluid viscous dampers',     420000.00, 15, 'Approved', '2024-11-01', '2024-11-20', 'Structural Eng','State DOT'),
+(3, 'CO-003', 'Marine mammal monitoring extension',      'Extended biological monitoring period per NOAA requirement',                 180000.00, 0,  'Approved', '2025-01-15', '2025-02-01', 'NOAA',         'Michael Park'),
+(4, 'CO-001', 'Soil remediation — contamination',       'Petroleum contamination found at 12 ft depth requiring remediation',        520000.00, 15, 'Approved', '2024-06-10', '2024-06-20', 'Env. Consultant','Amanda Foster'),
+(4, 'CO-002', 'Unit layout revision — floors 15-20',    'Developer revised unit mix for 6 floors',                                    340000.00, 20, 'Approved', '2024-10-15', '2024-11-01', 'Developer',    'Amanda Foster'),
+(5, 'CO-001', 'Utility relocation — 16-inch water main','Uncharted water main requiring emergency relocation',                       680000.00, 25, 'Approved', '2024-03-15', '2024-04-01', 'David Kim',    'Transit Auth'),
+(5, 'CO-002', 'Station platform extension',              'Longer platforms to accommodate future 4-car trains',                      1200000.00, 30, 'Approved', '2024-07-01', '2024-08-15', 'Transit Auth', 'Transit Auth'),
+(5, 'CO-003', 'Noise barrier addition',                  'Community request for sound walls near residential areas',                   450000.00, 10, 'Under Review', '2025-02-01', NULL, 'Community Board', NULL),
+(6, 'CO-001', 'Amphitheater seating expansion',         'Increase seating from 200 to 350 per community feedback',                   125000.00, 10, 'Implemented', '2024-05-15', '2024-05-25', 'Parks Dept',  'Lisa Nguyen'),
+(6, 'CO-002', 'Irrigation system upgrade',               'Upgrade to smart irrigation with weather-based controllers',                 45000.00,  5,  'Implemented', '2024-07-01', '2024-07-10', 'Lisa Nguyen', 'City Manager'),
+(7, 'CO-001', 'Loading dock reconfiguration',           'Revised loading dock layout for larger trailer accommodation',               180000.00, 12, 'Approved', '2024-09-01', '2024-09-15', 'Tenant',       'Robert Chen'),
+(9, 'CO-001', 'Retaining wall redesign',                'Soil conditions required MSE wall instead of cast-in-place',               -120000.00, -5, 'Implemented', '2024-01-15', '2024-02-01', 'Geotech',     'Thomas Wright'),
+(9, 'CO-002', 'Additional ITS conduit',                  'CalTrans requested additional conduit runs for future ITS expansion',       85000.00,  5,  'Approved', '2024-11-01', '2024-11-15', 'CalTrans',    'Thomas Wright'),
+(10, 'CO-001', 'Utility rerouting — existing campus',   'Existing hospital utilities required rerouting around new foundation',       340000.00, 15, 'Approved', '2024-05-15', '2024-06-01', 'Patricia Davis','Health Network'),
+(10, 'CO-002', 'MRI suite shielding upgrade',            'Upgraded RF shielding requirements for new 3T MRI scanner',                 280000.00, 10, 'Approved', '2024-09-01', '2024-09-20', 'Radiology',    'Patricia Davis'),
+(10, 'CO-003', 'Emergency generator upgrade',            'Larger emergency generator per updated code requirements',                  195000.00, 0,  'Under Review', '2025-03-01', NULL, 'Code Review', NULL),
+(11, 'CO-001', 'EV charger specification upgrade',       'Upgrade from Level 2 to DC fast chargers for 50 spaces',                   320000.00, 20, 'Implemented', '2024-04-01', '2024-04-15', 'City Council', 'Christopher Lee'),
+(11, 'CO-002', 'Waterproofing membrane upgrade',         'Premium waterproofing system required per consultant recommendation',       185000.00, 8,  'Implemented', '2024-05-15', '2024-05-25', 'Waterproofing Consultant', 'Christopher Lee'),
+(13, 'CO-001', 'Seawall extension — 50 meters',         'Extended seawall to protect adjacent property per city request',             380000.00, 15, 'Approved', '2024-06-01', '2024-06-15', 'City Engineer', 'Daniel Garcia'),
+(13, 'CO-002', 'Public art foundation modifications',    'Modified foundations to accommodate larger art installations',               65000.00,  5,  'Approved', '2024-11-15', '2024-12-01', 'Arts Commission','Daniel Garcia');
+
+-- ============================================================
+-- PROJECT_RESOURCES (50 rows)
+-- ============================================================
+INSERT INTO project_resources (project_id, resource_id, role, start_date, end_date, allocated_hours, actual_hours) VALUES
+(1, 1,  'Lead Structural Engineer',   '2024-03-15', '2025-09-30', 2400, 2100),
+(1, 2,  'Site Superintendent',        '2024-04-01', '2025-09-30', 3060, 2800),
+(1, 3,  'Ironwork Foreman',           '2024-07-01', '2025-03-31', 1530, 1650),
+(1, 6,  'Safety Officer',             '2024-04-01', '2025-09-30', 3060, 2700),
+(1, 7,  'BIM Coordinator',            '2024-03-15', '2025-06-30', 2000, 1850),
+(1, 11, 'Tower Crane',                '2024-06-01', '2025-08-31', 3060, 2800),
+(2, 2,  'Site Superintendent',        '2024-01-15', '2025-06-15', 2720, 2500),
+(2, 5,  'Concrete Foreman',           '2024-02-15', '2024-09-30', 1280, 1350),
+(2, 6,  'Safety Officer',             '2024-01-15', '2025-06-15', 2720, 2400),
+(2, 10, 'QC Inspector',               '2024-03-01', '2025-05-31', 2200, 2000),
+(3, 1,  'Bridge Engineer',            '2024-02-01', '2025-12-31', 3840, 3200),
+(3, 3,  'Ironwork Crew Lead',         '2024-04-01', '2025-10-31', 3060, 3400),
+(3, 6,  'Marine Safety Officer',      '2024-04-01', '2025-12-31', 3400, 3100),
+(3, 8,  'Crane Operator',             '2024-04-01', '2025-10-31', 3060, 2900),
+(3, 10, 'QC Inspector — Welding',     '2024-05-01', '2025-11-30', 2880, 2600),
+(4, 1,  'Tower Structural Engineer',  '2024-04-01', '2026-06-30', 4000, 2200),
+(4, 2,  'Site Superintendent',        '2024-05-01', '2026-06-30', 4600, 2500),
+(4, 7,  'BIM Coordinator',            '2024-04-01', '2025-12-31', 3400, 1800),
+(4, 11, 'Tower Crane',                '2024-06-01', '2026-04-30', 4200, 2100),
+(4, 13, 'Concrete Pump',              '2024-07-01', '2025-12-31', 2880, 1500),
+(5, 1,  'Rail Systems Engineer',      '2023-11-01', '2026-03-31', 4800, 3200),
+(5, 8,  'Equipment Operator Lead',    '2024-01-15', '2025-12-31', 3840, 2600),
+(5, 6,  'Safety Manager',             '2023-11-01', '2026-03-31', 4800, 3000),
+(5, 10, 'QC Manager',                 '2024-01-01', '2026-03-31', 4400, 2800),
+(5, 12, 'Pile Rig Operator',          '2024-01-01', '2024-12-31', 1920, 2100),
+(6, 2,  'Site Superintendent',        '2024-01-20', '2024-12-15', 1760, 1820),
+(6, 5,  'Concrete Finisher Lead',     '2024-03-01', '2024-06-30', 680,  700),
+(6, 10, 'QC Inspector',               '2024-03-01', '2024-11-30', 1440, 1380),
+(7, 2,  'Site Superintendent',        '2024-05-15', '2025-10-31', 2880, 1900),
+(7, 5,  'Concrete Crew Lead',         '2024-06-01', '2025-03-31', 1600, 1100),
+(7, 8,  'Equipment Operator',         '2024-05-15', '2024-10-31', 960,  920),
+(7, 12, 'Excavator',                  '2024-05-15', '2024-09-30', 720,  680),
+(7, 15, 'Compaction Roller',          '2024-06-01', '2024-09-30', 640,  600),
+(8, 1,  'Lab Design Engineer',        '2024-06-01', '2024-10-31', 800,  750),
+(8, 7,  'BIM Coordinator',            '2024-06-01', '2024-09-30', 640,  580),
+(9, 1,  'Highway Design Engineer',    '2023-09-15', '2025-08-31', 4000, 3400),
+(9, 8,  'Equipment Operator Crew',    '2023-11-01', '2025-06-30', 3200, 2900),
+(9, 6,  'Traffic Safety Officer',     '2023-10-01', '2025-08-31', 3800, 3200),
+(9, 15, 'Compaction Roller',          '2023-11-01', '2024-06-30', 1280, 1200),
+(10, 1,  'Medical Facility Engineer', '2024-02-15', '2026-02-28', 4000, 2600),
+(10, 2,  'Site Superintendent',       '2024-03-01', '2026-02-28', 4600, 2800),
+(10, 6,  'Safety Officer',            '2024-03-01', '2026-02-28', 4600, 2700),
+(10, 11, 'Tower Crane',               '2024-05-01', '2025-12-31', 3400, 2200),
+(11, 2,  'Site Superintendent',       '2023-08-15', '2024-10-15', 2240, 2350),
+(11, 8,  'Crane Operator',            '2023-10-01', '2024-06-30', 1440, 1500),
+(13, 2,  'Site Superintendent',       '2024-03-15', '2025-05-31', 2400, 1800),
+(13, 5,  'Concrete Crew',             '2024-04-01', '2024-11-30', 1360, 1400),
+(13, 12, 'Marine Excavator',          '2024-04-01', '2024-08-31', 800,  850),
+(14, 1,  'Data Center Engineer',      '2024-08-01', '2024-12-31', 800,  400),
+(14, 7,  'BIM Coordinator',           '2024-08-01', '2024-12-31', 800,  350);
+
+-- ============================================================
+-- DAILY_LOGS (100 rows — spread across active projects)
+-- ============================================================
+INSERT INTO daily_logs (project_id, log_date, weather, workers_on_site, hours_worked, work_performed, safety_incidents, delays, reported_by) VALUES
+-- Project 1: Riverside Office Complex
+(1, '2025-03-10', 'Clear',   45, 8.0,  'Curtain wall installation floors 3-5, MEP rough-in floors 1-2',           NULL, NULL, 'Mike Stevens'),
+(1, '2025-03-11', 'Cloudy',  42, 8.0,  'Continued curtain wall, elevator shaft steel',                           NULL, NULL, 'Mike Stevens'),
+(1, '2025-03-12', 'Rain',    28, 4.5,  'Interior work only — drywall framing floors 1-2',                        NULL, 'Rain stopped exterior work at 11am', 'Mike Stevens'),
+(1, '2025-03-13', 'Clear',   48, 9.0,  'Curtain wall floors 5-6, concrete pour level 7 deck',                    NULL, NULL, 'Mike Stevens'),
+(1, '2025-03-14', 'Clear',   50, 8.5,  'Steel erection floors 7-8, mechanical ductwork floor 3',                 'Near miss — dropped wrench from scaffold, area was barricaded', NULL, 'Mike Stevens'),
+(1, '2025-03-17', 'Cloudy',  47, 8.0,  'Curtain wall mullion installation floor 6, plumbing rough-in',           NULL, NULL, 'Mike Stevens'),
+(1, '2025-03-18', 'Clear',   52, 9.0,  'Concrete pour floor 8, curtain wall glazing floors 3-4',                 NULL, NULL, 'Mike Stevens'),
+(1, '2025-03-19', 'Clear',   49, 8.5,  'Electrical rough-in floors 2-3, fire sprinkler mains',                   NULL, NULL, 'Mike Stevens'),
+(1, '2025-03-20', 'Rain',    15, 2.0,  'Heavy rain — minimal interior work only',                                NULL, 'Full day rain delay, only covered areas accessible', 'Mike Stevens'),
+(1, '2025-03-21', 'Cloudy',  44, 7.5,  'Site cleanup after rain, resumed curtain wall',                          NULL, 'Morning delay for crane inspection after rain', 'Mike Stevens'),
+-- Project 2: Greenfield Elementary
+(2, '2025-03-10', 'Clear',   35, 8.0,  'Interior painting classrooms wing A, flooring installation gym',         NULL, NULL, 'Tom Reeves'),
+(2, '2025-03-11', 'Clear',   38, 8.5,  'Ceiling grid installation library, casework delivery',                   NULL, NULL, 'Tom Reeves'),
+(2, '2025-03-12', 'Rain',    20, 5.0,  'Interior finish work only, tile installation restrooms',                 NULL, 'Exterior work postponed', 'Tom Reeves'),
+(2, '2025-03-13', 'Clear',   36, 8.0,  'Playground equipment installation began, parking lot grading',           NULL, NULL, 'Tom Reeves'),
+(2, '2025-03-14', 'Clear',   40, 8.0,  'Final MEP trim-out wing A, fire alarm testing',                          NULL, NULL, 'Tom Reeves'),
+(2, '2025-03-17', 'Cloudy',  34, 8.0,  'Exterior siding installation, interior hardware',                        NULL, NULL, 'Tom Reeves'),
+(2, '2025-03-18', 'Clear',   37, 8.5,  'Parking lot paving, sidewalk concrete',                                  NULL, NULL, 'Tom Reeves'),
+(2, '2025-03-19', 'Clear',   32, 8.0,  'Landscaping — tree planting and irrigation',                             NULL, NULL, 'Tom Reeves'),
+(2, '2025-03-20', 'Rain',    12, 3.0,  'Minimal interior work — weather day',                                    NULL, 'Rain day', 'Tom Reeves'),
+(2, '2025-03-21', 'Clear',   35, 8.0,  'Resumed exterior work, punchlist walk wing B',                           NULL, NULL, 'Tom Reeves'),
+-- Project 3: Harbor Bridge
+(3, '2025-03-10', 'Clear',   60, 8.0,  'Deck panel placement spans 3-4, rebar tying span 5',                     NULL, NULL, 'Carlos Mendez'),
+(3, '2025-03-11', 'Cloudy',  58, 8.0,  'Concrete pour span 4 deck, bearing pad installation',                    NULL, NULL, 'Carlos Mendez'),
+(3, '2025-03-12', 'Storm',   0,  0.0,  'No work — storm conditions, all marine operations suspended',            NULL, 'Full day weather delay — storm surge warning', 'Carlos Mendez'),
+(3, '2025-03-13', 'Cloudy',  40, 6.0,  'Storm damage assessment, debris cleanup, equipment inspection',          NULL, 'Half day for storm recovery', 'Carlos Mendez'),
+(3, '2025-03-14', 'Clear',   62, 9.0,  'Deck panel placement span 5, post-tensioning span 3',                    NULL, NULL, 'Carlos Mendez'),
+(3, '2025-03-17', 'Clear',   65, 9.5,  'Barrier rail forming span 3, deck pour span 5',                          NULL, NULL, 'Carlos Mendez'),
+(3, '2025-03-18', 'Rain',    25, 4.0,  'Light rain — deck curing operations, shop work on prefab elements',      NULL, 'Reduced crew due to wet conditions', 'Carlos Mendez'),
+(3, '2025-03-19', 'Clear',   60, 8.5,  'Post-tensioning span 4, approach slab rebar',                            NULL, NULL, 'Carlos Mendez'),
+(3, '2025-03-20', 'Rain',    10, 2.0,  'Heavy rain — emergency tarp placement on fresh concrete',                NULL, 'Full rain delay', 'Carlos Mendez'),
+(3, '2025-03-21', 'Clear',   55, 7.5,  'Resumed deck work, drainage installation span 3',                        NULL, 'Morning delay for surface drying', 'Carlos Mendez'),
+-- Project 4: Sunset Residential Tower
+(4, '2025-03-10', 'Clear',   70, 8.0,  'Core wall pour floor 18, formwork floor 19, MEP rough floor 12',         NULL, NULL, 'Jessica Wang'),
+(4, '2025-03-11', 'Clear',   72, 9.0,  'Flying form cycle floor 18 slab, crane lifting materials',               NULL, NULL, 'Jessica Wang'),
+(4, '2025-03-12', 'Rain',    35, 5.0,  'Interior framing floors 8-10, no crane operations',                      NULL, 'Wind and rain — crane shut down', 'Jessica Wang'),
+(4, '2025-03-13', 'Clear',   68, 8.5,  'Concrete pour floor 18 slab, core wall rebar floor 19',                  NULL, NULL, 'Jessica Wang'),
+(4, '2025-03-14', 'Clear',   75, 9.0,  'Floor 19 deck forming, podium retail framing',                           'Worker twisted ankle on rebar mat — first aid only', NULL, 'Jessica Wang'),
+(4, '2025-03-17', 'Cloudy',  65, 8.0,  'Core climbing form advance, MEP rough-in floor 13',                      NULL, NULL, 'Jessica Wang'),
+(4, '2025-03-18', 'Clear',   72, 8.5,  'Slab pour floor 19, window installation floors 5-7',                     NULL, NULL, 'Jessica Wang'),
+(4, '2025-03-19', 'Clear',   70, 8.0,  'Formwork floor 20, electrical rough floors 10-11',                       NULL, NULL, 'Jessica Wang'),
+(4, '2025-03-20', 'Rain',    30, 3.5,  'Interior work only — drywall and painting lower floors',                 NULL, 'Rain delay — no elevated work', 'Jessica Wang'),
+(4, '2025-03-21', 'Clear',   68, 8.0,  'Resumed floor 20 forming, curtain wall podium level',                    NULL, NULL, 'Jessica Wang'),
+-- Project 5: Metro Line Extension
+(5, '2025-03-10', 'Clear',   85, 9.0,  'Guideway segment placement station 2-3, station 1 roof steel',           NULL, NULL, 'Ray Patel'),
+(5, '2025-03-11', 'Clear',   88, 9.0,  'Post-tensioning guideway, station 2 platform concrete',                  NULL, NULL, 'Ray Patel'),
+(5, '2025-03-12', 'Rain',    40, 4.0,  'Indoor station work only, systems conduit installation',                 NULL, 'Rain delay — no guideway lifts', 'Ray Patel'),
+(5, '2025-03-13', 'Cloudy',  82, 8.5,  'Guideway segment lifts resumed, station 1 MEP rough-in',                NULL, NULL, 'Ray Patel'),
+(5, '2025-03-14', 'Clear',   90, 9.5,  'Major guideway pour, traction power substation foundation',              NULL, NULL, 'Ray Patel'),
+(5, '2025-03-17', 'Clear',   86, 9.0,  'Station 3 column pours, guideway parapet forming',                       NULL, NULL, 'Ray Patel'),
+(5, '2025-03-18', 'Cloudy',  80, 8.0,  'Signal conduit routing, station 2 architectural precast',                NULL, NULL, 'Ray Patel'),
+(5, '2025-03-19', 'Clear',   84, 8.5,  'Guideway segments east approach, OCS pole foundations',                  NULL, NULL, 'Ray Patel'),
+(5, '2025-03-20', 'Rain',    30, 3.0,  'Station interior electrical only',                                       NULL, 'Major rain event — all elevated work suspended', 'Ray Patel'),
+(5, '2025-03-21', 'Cloudy',  78, 7.5,  'Cleanup and resumed guideway work',                                      NULL, 'Morning delay for equipment inspection', 'Ray Patel'),
+-- Project 7: Industrial Warehouse
+(7, '2025-03-10', 'Clear',   30, 8.0,  'Building 2 roof panel installation, building 3 steel erection',          NULL, NULL, 'Bill Foster'),
+(7, '2025-03-11', 'Clear',   32, 8.5,  'Building 2 wall panels, building 3 purlins and girts',                   NULL, NULL, 'Bill Foster'),
+(7, '2025-03-12', 'Rain',    15, 4.0,  'Interior concrete saw-cutting building 1, material staging',             NULL, 'Rain — no roof work', 'Bill Foster'),
+(7, '2025-03-13', 'Clear',   28, 8.0,  'Building 3 roof deck, building 1 cold storage insulation',               NULL, NULL, 'Bill Foster'),
+(7, '2025-03-14', 'Clear',   35, 8.0,  'Loading dock concrete pour buildings 1-2, steel trim building 3',        NULL, NULL, 'Bill Foster'),
+(7, '2025-03-17', 'Cloudy',  30, 8.0,  'Building 2 roof completion, electrical rough building 1',                NULL, NULL, 'Bill Foster'),
+(7, '2025-03-18', 'Clear',   33, 8.5,  'Cold storage panel installation building 1',                             NULL, NULL, 'Bill Foster'),
+(7, '2025-03-19', 'Clear',   31, 8.0,  'Building 3 wall panels, plumbing rough building 2',                      NULL, NULL, 'Bill Foster'),
+(7, '2025-03-20', 'Rain',    10, 2.5,  'Interior work only — minimal crew',                                      NULL, 'Rain day', 'Bill Foster'),
+(7, '2025-03-21', 'Clear',   29, 7.5,  'Resumed building 3 envelope, fire sprinkler building 1',                 NULL, NULL, 'Bill Foster'),
+-- Project 9: Highway 101 Interchange
+(9, '2025-03-10', 'Clear',   40, 8.0,  'Final paving segment NB on-ramp, signal cabinet installation',           NULL, NULL, 'Dave Morrison'),
+(9, '2025-03-11', 'Clear',   42, 8.5,  'Striping and pavement markings, loop detector installation',             NULL, NULL, 'Dave Morrison'),
+(9, '2025-03-12', 'Rain',    8,  2.0,  'No paving — rain. Signal wiring in cabinet only',                        NULL, 'Full rain delay for paving', 'Dave Morrison'),
+(9, '2025-03-13', 'Cloudy',  38, 7.5,  'Guardrail installation, sign structure foundations',                     NULL, NULL, 'Dave Morrison'),
+(9, '2025-03-14', 'Clear',   45, 9.0,  'Final overlay SB ramp, ITS conduit terminations',                        NULL, NULL, 'Dave Morrison'),
+(9, '2025-03-17', 'Clear',   40, 8.0,  'Sign installation, signal controller programming',                       NULL, NULL, 'Dave Morrison'),
+(9, '2025-03-18', 'Cloudy',  35, 8.0,  'Landscaping and erosion control, final grading',                         NULL, NULL, 'Dave Morrison'),
+(9, '2025-03-19', 'Clear',   38, 8.0,  'Signal timing tests, nighttime illumination check',                      NULL, NULL, 'Dave Morrison'),
+(9, '2025-03-20', 'Rain',    5,  1.5,  'Rain day — traffic control maintenance only',                            NULL, 'Rain delay', 'Dave Morrison'),
+(9, '2025-03-21', 'Clear',   42, 8.5,  'Punchlist walk with CalTrans, minor repairs',                            NULL, NULL, 'Dave Morrison'),
+-- Project 10: Lakeside Medical Center
+(10, '2025-03-10', 'Clear',   55, 8.0, 'Medical gas piping floor 2, ductwork installation floor 3',              NULL, NULL, 'Rita Gonzalez'),
+(10, '2025-03-11', 'Clear',   58, 8.5, 'Electrical conduit ER wing, concrete pour loading dock',                 NULL, NULL, 'Rita Gonzalez'),
+(10, '2025-03-12', 'Rain',    30, 5.0, 'Interior MEP work only, equipment pad forming',                          NULL, 'No exterior concrete work', 'Rita Gonzalez'),
+(10, '2025-03-13', 'Cloudy',  52, 8.0, 'Structural steel canopy, plumbing risers floors 3-4',                    NULL, NULL, 'Rita Gonzalez'),
+(10, '2025-03-14', 'Clear',   60, 9.0, 'MRI suite RF shielding installation, roof curb placement',               NULL, NULL, 'Rita Gonzalez'),
+(10, '2025-03-17', 'Clear',   56, 8.0, 'Fire alarm device installation, elevator shaft MEP',                     NULL, NULL, 'Rita Gonzalez'),
+(10, '2025-03-18', 'Cloudy',  54, 8.0, 'AHU rigging to roof, medical gas testing floor 1',                       NULL, NULL, 'Rita Gonzalez'),
+(10, '2025-03-19', 'Clear',   58, 8.5, 'Curtain wall installation lobby, OR suite rough-in',                     NULL, NULL, 'Rita Gonzalez'),
+(10, '2025-03-20', 'Rain',    25, 4.0, 'Interior finish work, equipment staging',                                NULL, 'Rain reduced exterior crew', 'Rita Gonzalez'),
+(10, '2025-03-21', 'Clear',   55, 8.0, 'Resumed exterior work, generator pad concrete',                          NULL, NULL, 'Rita Gonzalez'),
+-- Project 13: Waterfront Promenade
+(13, '2025-03-10', 'Clear',   22, 8.0, 'Light pole foundation installation, bench anchoring',                    NULL, NULL, 'Sam Torres'),
+(13, '2025-03-11', 'Clear',   25, 8.5, 'Decorative paving section 3, railing installation',                      NULL, NULL, 'Sam Torres'),
+(13, '2025-03-12', 'Storm',   0,  0.0, 'No work — coastal storm warning',                                       NULL, 'Storm — waterfront closed', 'Sam Torres'),
+(13, '2025-03-13', 'Cloudy',  18, 6.0, 'Storm damage inspection, debris cleanup',                                NULL, 'Half day storm recovery', 'Sam Torres'),
+(13, '2025-03-14', 'Clear',   24, 8.0, 'Continued railing, bike path striping preparation',                      NULL, NULL, 'Sam Torres'),
+(13, '2025-03-17', 'Clear',   20, 8.0, 'Landscape planting zone A, irrigation connections',                      NULL, NULL, 'Sam Torres'),
+(13, '2025-03-18', 'Cloudy',  22, 8.0, 'Light fixture wiring, electrical panel terminations',                    NULL, NULL, 'Sam Torres'),
+(13, '2025-03-19', 'Clear',   23, 8.5, 'Art installation foundation prep, final grading',                        NULL, NULL, 'Sam Torres'),
+(13, '2025-03-20', 'Rain',    8,  3.0, 'Minimal work — covered area electrical only',                            NULL, 'Rain delay', 'Sam Torres'),
+(13, '2025-03-21', 'Clear',   21, 7.5, 'Resumed landscape work, bike path markings',                             NULL, NULL, 'Sam Torres');

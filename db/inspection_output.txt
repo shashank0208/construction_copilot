@@ -1,0 +1,1147 @@
+﻿-[ RECORD 1 ]-------
+section | ROW COUNTS
+
+-[ RECORD 1 ]-----------------
+schemaname | public
+table_name | change_orders
+row_count  | 25
+-[ RECORD 2 ]-----------------
+schemaname | public
+table_name | cost_items
+row_count  | 102
+-[ RECORD 3 ]-----------------
+schemaname | public
+table_name | daily_logs
+row_count  | 90
+-[ RECORD 4 ]-----------------
+schemaname | public
+table_name | milestones
+row_count  | 60
+-[ RECORD 5 ]-----------------
+schemaname | public
+table_name | project_resources
+row_count  | 50
+-[ RECORD 6 ]-----------------
+schemaname | public
+table_name | projects
+row_count  | 15
+-[ RECORD 7 ]-----------------
+schemaname | public
+table_name | resources
+row_count  | 30
+-[ RECORD 8 ]-----------------
+schemaname | public
+table_name | risk_assessments
+row_count  | 44
+
+-[ RECORD 1 ]----
+section | COLUMNS
+
+-[ RECORD 1 ]------------+---------------------------------------------------------
+table_name               | change_orders
+column_name              | change_order_id
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | nextval('change_orders_change_order_id_seq'::regclass)
+-[ RECORD 2 ]------------+---------------------------------------------------------
+table_name               | change_orders
+column_name              | project_id
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | 
+-[ RECORD 3 ]------------+---------------------------------------------------------
+table_name               | change_orders
+column_name              | change_order_number
+data_type                | character varying
+character_maximum_length | 30
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 4 ]------------+---------------------------------------------------------
+table_name               | change_orders
+column_name              | title
+data_type                | character varying
+character_maximum_length | 300
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 5 ]------------+---------------------------------------------------------
+table_name               | change_orders
+column_name              | description
+data_type                | text
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 6 ]------------+---------------------------------------------------------
+table_name               | change_orders
+column_name              | cost_impact
+data_type                | numeric
+character_maximum_length | 
+numeric_precision        | 12
+is_nullable              | NO
+column_default           | 0
+-[ RECORD 7 ]------------+---------------------------------------------------------
+table_name               | change_orders
+column_name              | schedule_impact_days
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | 0
+-[ RECORD 8 ]------------+---------------------------------------------------------
+table_name               | change_orders
+column_name              | status
+data_type                | character varying
+character_maximum_length | 30
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 'Submitted'::character varying
+-[ RECORD 9 ]------------+---------------------------------------------------------
+table_name               | change_orders
+column_name              | submitted_date
+data_type                | date
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 10 ]-----------+---------------------------------------------------------
+table_name               | change_orders
+column_name              | approved_date
+data_type                | date
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 11 ]-----------+---------------------------------------------------------
+table_name               | change_orders
+column_name              | requested_by
+data_type                | character varying
+character_maximum_length | 150
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 12 ]-----------+---------------------------------------------------------
+table_name               | change_orders
+column_name              | approved_by
+data_type                | character varying
+character_maximum_length | 150
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 13 ]-----------+---------------------------------------------------------
+table_name               | cost_items
+column_name              | cost_item_id
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | nextval('cost_items_cost_item_id_seq'::regclass)
+-[ RECORD 14 ]-----------+---------------------------------------------------------
+table_name               | cost_items
+column_name              | project_id
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | 
+-[ RECORD 15 ]-----------+---------------------------------------------------------
+table_name               | cost_items
+column_name              | resource_id
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | YES
+column_default           | 
+-[ RECORD 16 ]-----------+---------------------------------------------------------
+table_name               | cost_items
+column_name              | cost_category
+data_type                | character varying
+character_maximum_length | 50
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 17 ]-----------+---------------------------------------------------------
+table_name               | cost_items
+column_name              | description
+data_type                | character varying
+character_maximum_length | 300
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 18 ]-----------+---------------------------------------------------------
+table_name               | cost_items
+column_name              | planned_amount
+data_type                | numeric
+character_maximum_length | 
+numeric_precision        | 12
+is_nullable              | NO
+column_default           | 
+-[ RECORD 19 ]-----------+---------------------------------------------------------
+table_name               | cost_items
+column_name              | actual_amount
+data_type                | numeric
+character_maximum_length | 
+numeric_precision        | 12
+is_nullable              | NO
+column_default           | 0
+-[ RECORD 20 ]-----------+---------------------------------------------------------
+table_name               | cost_items
+column_name              | incurred_date
+data_type                | date
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 21 ]-----------+---------------------------------------------------------
+table_name               | cost_items
+column_name              | approval_status
+data_type                | character varying
+character_maximum_length | 20
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 'Pending'::character varying
+-[ RECORD 22 ]-----------+---------------------------------------------------------
+table_name               | cost_items
+column_name              | notes
+data_type                | text
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 23 ]-----------+---------------------------------------------------------
+table_name               | daily_logs
+column_name              | log_id
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | nextval('daily_logs_log_id_seq'::regclass)
+-[ RECORD 24 ]-----------+---------------------------------------------------------
+table_name               | daily_logs
+column_name              | project_id
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | 
+-[ RECORD 25 ]-----------+---------------------------------------------------------
+table_name               | daily_logs
+column_name              | log_date
+data_type                | date
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 26 ]-----------+---------------------------------------------------------
+table_name               | daily_logs
+column_name              | weather
+data_type                | character varying
+character_maximum_length | 30
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 27 ]-----------+---------------------------------------------------------
+table_name               | daily_logs
+column_name              | workers_on_site
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | 0
+-[ RECORD 28 ]-----------+---------------------------------------------------------
+table_name               | daily_logs
+column_name              | hours_worked
+data_type                | numeric
+character_maximum_length | 
+numeric_precision        | 5
+is_nullable              | NO
+column_default           | 0
+-[ RECORD 29 ]-----------+---------------------------------------------------------
+table_name               | daily_logs
+column_name              | work_performed
+data_type                | text
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 30 ]-----------+---------------------------------------------------------
+table_name               | daily_logs
+column_name              | safety_incidents
+data_type                | text
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 31 ]-----------+---------------------------------------------------------
+table_name               | daily_logs
+column_name              | delays
+data_type                | text
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 32 ]-----------+---------------------------------------------------------
+table_name               | daily_logs
+column_name              | reported_by
+data_type                | character varying
+character_maximum_length | 150
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 33 ]-----------+---------------------------------------------------------
+table_name               | milestones
+column_name              | milestone_id
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | nextval('milestones_milestone_id_seq'::regclass)
+-[ RECORD 34 ]-----------+---------------------------------------------------------
+table_name               | milestones
+column_name              | project_id
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | 
+-[ RECORD 35 ]-----------+---------------------------------------------------------
+table_name               | milestones
+column_name              | milestone_name
+data_type                | character varying
+character_maximum_length | 200
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 36 ]-----------+---------------------------------------------------------
+table_name               | milestones
+column_name              | planned_date
+data_type                | date
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 37 ]-----------+---------------------------------------------------------
+table_name               | milestones
+column_name              | actual_date
+data_type                | date
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 38 ]-----------+---------------------------------------------------------
+table_name               | milestones
+column_name              | status
+data_type                | character varying
+character_maximum_length | 30
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 'Pending'::character varying
+-[ RECORD 39 ]-----------+---------------------------------------------------------
+table_name               | milestones
+column_name              | weight_pct
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | 10
+-[ RECORD 40 ]-----------+---------------------------------------------------------
+table_name               | milestones
+column_name              | notes
+data_type                | text
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 41 ]-----------+---------------------------------------------------------
+table_name               | project_resources
+column_name              | assignment_id
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | nextval('project_resources_assignment_id_seq'::regclass)
+-[ RECORD 42 ]-----------+---------------------------------------------------------
+table_name               | project_resources
+column_name              | project_id
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | 
+-[ RECORD 43 ]-----------+---------------------------------------------------------
+table_name               | project_resources
+column_name              | resource_id
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | 
+-[ RECORD 44 ]-----------+---------------------------------------------------------
+table_name               | project_resources
+column_name              | role
+data_type                | character varying
+character_maximum_length | 100
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 45 ]-----------+---------------------------------------------------------
+table_name               | project_resources
+column_name              | start_date
+data_type                | date
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 46 ]-----------+---------------------------------------------------------
+table_name               | project_resources
+column_name              | end_date
+data_type                | date
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 47 ]-----------+---------------------------------------------------------
+table_name               | project_resources
+column_name              | allocated_hours
+data_type                | numeric
+character_maximum_length | 
+numeric_precision        | 8
+is_nullable              | NO
+column_default           | 
+-[ RECORD 48 ]-----------+---------------------------------------------------------
+table_name               | project_resources
+column_name              | actual_hours
+data_type                | numeric
+character_maximum_length | 
+numeric_precision        | 8
+is_nullable              | NO
+column_default           | 0
+-[ RECORD 49 ]-----------+---------------------------------------------------------
+table_name               | project_resources
+column_name              | utilization_pct
+data_type                | numeric
+character_maximum_length | 
+numeric_precision        | 5
+is_nullable              | YES
+column_default           | 
+-[ RECORD 50 ]-----------+---------------------------------------------------------
+table_name               | projects
+column_name              | project_id
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | nextval('projects_project_id_seq'::regclass)
+-[ RECORD 51 ]-----------+---------------------------------------------------------
+table_name               | projects
+column_name              | project_name
+data_type                | character varying
+character_maximum_length | 200
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 52 ]-----------+---------------------------------------------------------
+table_name               | projects
+column_name              | project_code
+data_type                | character varying
+character_maximum_length | 20
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 53 ]-----------+---------------------------------------------------------
+table_name               | projects
+column_name              | status
+data_type                | character varying
+character_maximum_length | 30
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 'Planning'::character varying
+-[ RECORD 54 ]-----------+---------------------------------------------------------
+table_name               | projects
+column_name              | project_type
+data_type                | character varying
+character_maximum_length | 50
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 55 ]-----------+---------------------------------------------------------
+table_name               | projects
+column_name              | region
+data_type                | character varying
+character_maximum_length | 100
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 56 ]-----------+---------------------------------------------------------
+table_name               | projects
+column_name              | client_name
+data_type                | character varying
+character_maximum_length | 200
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 57 ]-----------+---------------------------------------------------------
+table_name               | projects
+column_name              | project_manager
+data_type                | character varying
+character_maximum_length | 150
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 58 ]-----------+---------------------------------------------------------
+table_name               | projects
+column_name              | description
+data_type                | text
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 59 ]-----------+---------------------------------------------------------
+table_name               | projects
+column_name              | planned_budget
+data_type                | numeric
+character_maximum_length | 
+numeric_precision        | 15
+is_nullable              | NO
+column_default           | 
+-[ RECORD 60 ]-----------+---------------------------------------------------------
+table_name               | projects
+column_name              | actual_cost
+data_type                | numeric
+character_maximum_length | 
+numeric_precision        | 15
+is_nullable              | NO
+column_default           | 0
+-[ RECORD 61 ]-----------+---------------------------------------------------------
+table_name               | projects
+column_name              | start_date
+data_type                | date
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 62 ]-----------+---------------------------------------------------------
+table_name               | projects
+column_name              | planned_end_date
+data_type                | date
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 63 ]-----------+---------------------------------------------------------
+table_name               | projects
+column_name              | actual_end_date
+data_type                | date
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 64 ]-----------+---------------------------------------------------------
+table_name               | projects
+column_name              | percent_complete
+data_type                | numeric
+character_maximum_length | 
+numeric_precision        | 5
+is_nullable              | NO
+column_default           | 0
+-[ RECORD 65 ]-----------+---------------------------------------------------------
+table_name               | projects
+column_name              | created_at
+data_type                | timestamp without time zone
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | NO
+column_default           | now()
+-[ RECORD 66 ]-----------+---------------------------------------------------------
+table_name               | projects
+column_name              | updated_at
+data_type                | timestamp without time zone
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | NO
+column_default           | now()
+-[ RECORD 67 ]-----------+---------------------------------------------------------
+table_name               | resources
+column_name              | resource_id
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | nextval('resources_resource_id_seq'::regclass)
+-[ RECORD 68 ]-----------+---------------------------------------------------------
+table_name               | resources
+column_name              | resource_name
+data_type                | character varying
+character_maximum_length | 200
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 69 ]-----------+---------------------------------------------------------
+table_name               | resources
+column_name              | resource_type
+data_type                | character varying
+character_maximum_length | 30
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 70 ]-----------+---------------------------------------------------------
+table_name               | resources
+column_name              | category
+data_type                | character varying
+character_maximum_length | 100
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 71 ]-----------+---------------------------------------------------------
+table_name               | resources
+column_name              | hourly_rate
+data_type                | numeric
+character_maximum_length | 
+numeric_precision        | 10
+is_nullable              | YES
+column_default           | 
+-[ RECORD 72 ]-----------+---------------------------------------------------------
+table_name               | resources
+column_name              | daily_rate
+data_type                | numeric
+character_maximum_length | 
+numeric_precision        | 10
+is_nullable              | YES
+column_default           | 
+-[ RECORD 73 ]-----------+---------------------------------------------------------
+table_name               | resources
+column_name              | email
+data_type                | character varying
+character_maximum_length | 254
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 74 ]-----------+---------------------------------------------------------
+table_name               | resources
+column_name              | phone
+data_type                | character varying
+character_maximum_length | 30
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 75 ]-----------+---------------------------------------------------------
+table_name               | resources
+column_name              | certifications
+data_type                | text
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 76 ]-----------+---------------------------------------------------------
+table_name               | resources
+column_name              | is_active
+data_type                | boolean
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | NO
+column_default           | true
+-[ RECORD 77 ]-----------+---------------------------------------------------------
+table_name               | risk_assessments
+column_name              | risk_id
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | nextval('risk_assessments_risk_id_seq'::regclass)
+-[ RECORD 78 ]-----------+---------------------------------------------------------
+table_name               | risk_assessments
+column_name              | project_id
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | 
+-[ RECORD 79 ]-----------+---------------------------------------------------------
+table_name               | risk_assessments
+column_name              | risk_category
+data_type                | character varying
+character_maximum_length | 50
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 80 ]-----------+---------------------------------------------------------
+table_name               | risk_assessments
+column_name              | risk_description
+data_type                | text
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 81 ]-----------+---------------------------------------------------------
+table_name               | risk_assessments
+column_name              | probability
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | 
+-[ RECORD 82 ]-----------+---------------------------------------------------------
+table_name               | risk_assessments
+column_name              | impact
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | NO
+column_default           | 
+-[ RECORD 83 ]-----------+---------------------------------------------------------
+table_name               | risk_assessments
+column_name              | risk_score
+data_type                | integer
+character_maximum_length | 
+numeric_precision        | 32
+is_nullable              | YES
+column_default           | 
+-[ RECORD 84 ]-----------+---------------------------------------------------------
+table_name               | risk_assessments
+column_name              | mitigation_strategy
+data_type                | text
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 85 ]-----------+---------------------------------------------------------
+table_name               | risk_assessments
+column_name              | status
+data_type                | character varying
+character_maximum_length | 30
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 'Open'::character varying
+-[ RECORD 86 ]-----------+---------------------------------------------------------
+table_name               | risk_assessments
+column_name              | identified_by
+data_type                | character varying
+character_maximum_length | 150
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 87 ]-----------+---------------------------------------------------------
+table_name               | risk_assessments
+column_name              | identified_date
+data_type                | date
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | NO
+column_default           | 
+-[ RECORD 88 ]-----------+---------------------------------------------------------
+table_name               | risk_assessments
+column_name              | review_date
+data_type                | date
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+-[ RECORD 89 ]-----------+---------------------------------------------------------
+table_name               | risk_assessments
+column_name              | notes
+data_type                | text
+character_maximum_length | 
+numeric_precision        | 
+is_nullable              | YES
+column_default           | 
+
+-[ RECORD 1 ]---------
+section | PRIMARY KEYS
+
+-[ RECORD 1 ]------------------
+table_name  | change_orders
+column_name | change_order_id
+-[ RECORD 2 ]------------------
+table_name  | cost_items
+column_name | cost_item_id
+-[ RECORD 3 ]------------------
+table_name  | daily_logs
+column_name | log_id
+-[ RECORD 4 ]------------------
+table_name  | milestones
+column_name | milestone_id
+-[ RECORD 5 ]------------------
+table_name  | project_resources
+column_name | assignment_id
+-[ RECORD 6 ]------------------
+table_name  | projects
+column_name | project_id
+-[ RECORD 7 ]------------------
+table_name  | resources
+column_name | resource_id
+-[ RECORD 8 ]------------------
+table_name  | risk_assessments
+column_name | risk_id
+
+-[ RECORD 1 ]---------
+section | FOREIGN KEYS
+
+-[ RECORD 1 ]------------------
+from_table  | change_orders
+from_column | project_id
+to_table    | projects
+to_column   | project_id
+-[ RECORD 2 ]------------------
+from_table  | cost_items
+from_column | resource_id
+to_table    | resources
+to_column   | resource_id
+-[ RECORD 3 ]------------------
+from_table  | cost_items
+from_column | project_id
+to_table    | projects
+to_column   | project_id
+-[ RECORD 4 ]------------------
+from_table  | daily_logs
+from_column | project_id
+to_table    | projects
+to_column   | project_id
+-[ RECORD 5 ]------------------
+from_table  | milestones
+from_column | project_id
+to_table    | projects
+to_column   | project_id
+-[ RECORD 6 ]------------------
+from_table  | project_resources
+from_column | project_id
+to_table    | projects
+to_column   | project_id
+-[ RECORD 7 ]------------------
+from_table  | project_resources
+from_column | resource_id
+to_table    | resources
+to_column   | resource_id
+-[ RECORD 8 ]------------------
+from_table  | risk_assessments
+from_column | project_id
+to_table    | projects
+to_column   | project_id
+
+-[ RECORD 1 ]-------------
+section | SAMPLE: projects
+
+-[ RECORD 1 ]----+-----------------------------------------------------------------------------------
+project_id       | 1
+project_name     | Riverside Office Complex
+project_code     | RSV-2024-001
+status           | Active
+project_type     | Commercial
+region           | Northeast
+client_name      | Meridian Properties LLC
+project_manager  | Sarah Chen
+description      | Multi-story office building with underground parking and LEED certification target
+planned_budget   | 12500000.00
+actual_cost      | 9800000.00
+start_date       | 2024-03-15
+planned_end_date | 2025-09-30
+actual_end_date  | 
+percent_complete | 72.50
+created_at       | 2026-10-02 09:22:49.599107
+updated_at       | 2026-10-02 09:22:49.599107
+-[ RECORD 2 ]----+-----------------------------------------------------------------------------------
+project_id       | 2
+project_name     | Greenfield Elementary School
+project_code     | GRN-2024-002
+status           | Active
+project_type     | Educational
+region           | Midwest
+client_name      | Springfield School Board
+project_manager  | James Rodriguez
+description      | New K-5 school with gymnasium, library, and playground facilities
+planned_budget   | 8200000.00
+actual_cost      | 7100000.00
+start_date       | 2024-01-10
+planned_end_date | 2025-06-15
+actual_end_date  | 
+percent_complete | 80.00
+created_at       | 2026-10-02 09:22:49.599107
+updated_at       | 2026-10-02 09:22:49.599107
+-[ RECORD 3 ]----+-----------------------------------------------------------------------------------
+project_id       | 3
+project_name     | Harbor Bridge Rehabilitation
+project_code     | HBR-2024-003
+status           | Active
+project_type     | Infrastructure
+region           | West Coast
+client_name      | State DOT
+project_manager  | Michael Park
+description      | Seismic retrofit and deck replacement of 1960s-era steel truss bridge
+planned_budget   | 22000000.00
+actual_cost      | 24500000.00
+start_date       | 2024-02-01
+planned_end_date | 2025-12-31
+actual_end_date  | 
+percent_complete | 55.00
+created_at       | 2026-10-02 09:22:49.599107
+updated_at       | 2026-10-02 09:22:49.599107
+
+-[ RECORD 1 ]--------------
+section | SAMPLE: resources
+
+-[ RECORD 1 ]--+--------------------------
+resource_id    | 1
+resource_name  | Senior Project Engineer
+resource_type  | Labor
+category       | Engineering
+hourly_rate    | 95.00
+daily_rate     | 760.00
+email          | j.smith@buildcorp.com
+phone          | 555-0101
+certifications | PE, PMP
+is_active      | t
+-[ RECORD 2 ]--+--------------------------
+resource_id    | 2
+resource_name  | Site Superintendent
+resource_type  | Labor
+category       | Management
+hourly_rate    | 85.00
+daily_rate     | 680.00
+email          | r.jones@buildcorp.com
+phone          | 555-0102
+certifications | OSHA 30, CPR
+is_active      | t
+-[ RECORD 3 ]--+--------------------------
+resource_id    | 3
+resource_name  | Structural Ironworker
+resource_type  | Labor
+category       | Skilled Trade
+hourly_rate    | 72.00
+daily_rate     | 576.00
+email          | m.garcia@ironlocal.org
+phone          | 555-0103
+certifications | AWS D1.1 Certified Welder
+is_active      | t
+
+-[ RECORD 1 ]---------------
+section | SAMPLE: milestones
+
+-[ RECORD 1 ]--+---------------------------------------------------------
+milestone_id   | 1
+project_id     | 1
+milestone_name | Foundation Complete
+planned_date   | 2024-06-30
+actual_date    | 2024-07-10
+status         | Completed
+weight_pct     | 20
+notes          | Delayed 10 days due to unexpected rock during excavation
+-[ RECORD 2 ]--+---------------------------------------------------------
+milestone_id   | 2
+project_id     | 1
+milestone_name | Structural Steel Topped Out
+planned_date   | 2024-11-15
+actual_date    | 2024-12-01
+status         | Completed
+weight_pct     | 25
+notes          | Steel delivery delayed by fabricator
+-[ RECORD 3 ]--+---------------------------------------------------------
+milestone_id   | 3
+project_id     | 1
+milestone_name | Envelope Closed
+planned_date   | 2025-03-31
+actual_date    | 
+status         | In Progress
+weight_pct     | 25
+notes          | Curtain wall installation underway
+
+-[ RECORD 1 ]---------------
+section | SAMPLE: cost_items
+
+-[ RECORD 1 ]---+-----------------------------------
+cost_item_id    | 1
+project_id      | 1
+resource_id     | 1
+cost_category   | Labor
+description     | Senior engineer ΓÇö design review
+planned_amount  | 180000.00
+actual_amount   | 195000.00
+incurred_date   | 2024-04-15
+approval_status | Approved
+notes           | 
+-[ RECORD 2 ]---+-----------------------------------
+cost_item_id    | 2
+project_id      | 1
+resource_id     | 2
+cost_category   | Labor
+description     | Site superintendent ΓÇö 18 months
+planned_amount  | 367200.00
+actual_amount   | 340000.00
+incurred_date   | 2024-04-01
+approval_status | Approved
+notes           | 
+-[ RECORD 3 ]---+-----------------------------------
+cost_item_id    | 3
+project_id      | 1
+resource_id     | 3
+cost_category   | Labor
+description     | Ironworker crew ΓÇö structural phase
+planned_amount  | 345600.00
+actual_amount   | 380000.00
+incurred_date   | 2024-07-15
+approval_status | Approved
+notes           | Overtime due to schedule recovery
+
+-[ RECORD 1 ]---------------------
+section | SAMPLE: risk_assessments
+
+-[ RECORD 1 ]-------+-----------------------------------------------------------
+risk_id             | 1
+project_id          | 1
+risk_category       | Budget
+risk_description    | Steel price escalation due to tariffs
+probability         | 4
+impact              | 4
+risk_score          | 16
+mitigation_strategy | Lock in pricing with early procurement contracts
+status              | Mitigating
+identified_by       | Sarah Chen
+identified_date     | 2024-03-20
+review_date         | 2024-09-15
+notes               | 
+-[ RECORD 2 ]-------+-----------------------------------------------------------
+risk_id             | 2
+project_id          | 1
+risk_category       | Schedule
+risk_description    | Curtain wall delivery delays from overseas manufacturer
+probability         | 3
+impact              | 4
+risk_score          | 12
+mitigation_strategy | Identify backup domestic supplier
+status              | Open
+identified_by       | James Lee
+identified_date     | 2024-08-01
+review_date         | 2025-01-15
+notes               | 
+-[ RECORD 3 ]-------+-----------------------------------------------------------
+risk_id             | 3
+project_id          | 1
+risk_category       | Quality
+risk_description    | LEED certification requirements may require design changes
+probability         | 2
+impact              | 3
+risk_score          | 6
+mitigation_strategy | Engage LEED consultant early in design phase
+status              | Mitigating
+identified_by       | Sarah Chen
+identified_date     | 2024-04-01
+review_date         | 2024-10-01
+notes               | 
+
+-[ RECORD 1 ]------------------
+section | SAMPLE: change_orders
+
+-[ RECORD 1 ]--------+----------------------------------------------------------------------------
+change_order_id      | 1
+project_id           | 1
+change_order_number  | CO-001
+title                | Rock excavation ΓÇö foundation
+description          | Unexpected rock encountered during foundation excavation requiring blasting
+cost_impact          | 285000.00
+schedule_impact_days | 10
+status               | Approved
+submitted_date       | 2024-05-20
+approved_date        | 2024-05-25
+requested_by         | Sarah Chen
+approved_by          | Owner Rep
+-[ RECORD 2 ]--------+----------------------------------------------------------------------------
+change_order_id      | 2
+project_id           | 1
+change_order_number  | CO-002
+title                | LEED platinum upgrade
+description          | Owner requested upgrade from LEED Gold to Platinum certification
+cost_impact          | 180000.00
+schedule_impact_days | 0
+status               | Approved
+submitted_date       | 2024-07-15
+approved_date        | 2024-07-30
+requested_by         | Owner
+approved_by          | Sarah Chen
+-[ RECORD 3 ]--------+----------------------------------------------------------------------------
+change_order_id      | 3
+project_id           | 1
+change_order_number  | CO-003
+title                | Additional parking level
+description          | Add one additional underground parking level per city requirement
+cost_impact          | 650000.00
+schedule_impact_days | 30
+status               | Under Review
+submitted_date       | 2025-01-10
+approved_date        | 
+requested_by         | City Planning
+approved_by          | 
+
+-[ RECORD 1 ]----------------------
+section | SAMPLE: project_resources
+
+-[ RECORD 1 ]---+-------------------------
+assignment_id   | 1
+project_id      | 1
+resource_id     | 1
+role            | Lead Structural Engineer
+start_date      | 2024-03-15
+end_date        | 2025-09-30
+allocated_hours | 2400.00
+actual_hours    | 2100.00
+utilization_pct | 87.50
+-[ RECORD 2 ]---+-------------------------
+assignment_id   | 2
+project_id      | 1
+resource_id     | 2
+role            | Site Superintendent
+start_date      | 2024-04-01
+end_date        | 2025-09-30
+allocated_hours | 3060.00
+actual_hours    | 2800.00
+utilization_pct | 91.50
+-[ RECORD 3 ]---+-------------------------
+assignment_id   | 3
+project_id      | 1
+resource_id     | 3
+role            | Ironwork Foreman
+start_date      | 2024-07-01
+end_date        | 2025-03-31
+allocated_hours | 1530.00
+actual_hours    | 1650.00
+utilization_pct | 107.84
+
+-[ RECORD 1 ]---------------
+section | SAMPLE: daily_logs
+
+-[ RECORD 1 ]----+--------------------------------------------------------------
+log_id           | 1
+project_id       | 1
+log_date         | 2025-03-10
+weather          | Clear
+workers_on_site  | 45
+hours_worked     | 8.00
+work_performed   | Curtain wall installation floors 3-5, MEP rough-in floors 1-2
+safety_incidents | 
+delays           | 
+reported_by      | Mike Stevens
+-[ RECORD 2 ]----+--------------------------------------------------------------
+log_id           | 2
+project_id       | 1
+log_date         | 2025-03-11
+weather          | Cloudy
+workers_on_site  | 42
+hours_worked     | 8.00
+work_performed   | Continued curtain wall, elevator shaft steel
+safety_incidents | 
+delays           | 
+reported_by      | Mike Stevens
+-[ RECORD 3 ]----+--------------------------------------------------------------
+log_id           | 3
+project_id       | 1
+log_date         | 2025-03-12
+weather          | Rain
+workers_on_site  | 28
+hours_worked     | 4.50
+work_performed   | Interior work only ΓÇö drywall framing floors 1-2
+safety_incidents | 
+delays           | Rain stopped exterior work at 11am
+reported_by      | Mike Stevens
+
